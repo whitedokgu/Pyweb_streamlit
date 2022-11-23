@@ -1,5 +1,6 @@
 streamlit
-numpy
 pandas
 bs4 
-urllib
+urllib3 
+plotly
+matplotlib
