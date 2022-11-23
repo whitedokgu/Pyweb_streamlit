@@ -1,3 +1,9 @@
 streamlit
 numpy
 pandas
+BeautifulSoup
+urllib.request
+matplotlib.pyplot
+matplotlib
+plotly.express
+rc
