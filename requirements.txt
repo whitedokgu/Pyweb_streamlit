@@ -2,3 +2,4 @@ streamlit
 numpy
 pandas
 bs4 
+urllib.request
