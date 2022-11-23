@@ -1,8 +1,4 @@
 streamlit
 numpy
 pandas
-BeautifulSoup
-urllib.request
-matplotlib
-plotly.express
-rc
+bs4 
