@@ -3,4 +3,5 @@ pandas
 bs4 
 urllib3 
 plotly
+openpyxl
 matplotlib
