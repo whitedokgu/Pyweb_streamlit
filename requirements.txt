@@ -5,4 +5,4 @@ urllib3
 plotly
 openpyxl
 matplotlib
-googletrans==4.0.0
+googletrans==4.0.0rc1
