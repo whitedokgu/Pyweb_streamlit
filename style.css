@@ -1,0 +1,47 @@
+/* Card */
+div.css-12w0qpk.e1tzin5v2,
+div.css-keje6w.e1tzin5v2 {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 3% 3% 3% 3%;
+  border-radius: 5px;
+  border-left: 0.5rem solid #9ad8e1 !important;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+label.css-186pv6d.e16fv1kl2 {
+  color: #36b9cc !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+/* Move block container higher */
+div.block-container.css-18e3th9.egzxvld2 {
+  margin-top: -5em;
+}
+
+div.css-10trblm.e16nr0p30 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2.2rem;
+  letter-spacing: -0.3px;
+  color: #242424;
+  margin-top: 1px;
+}
+
+div.css-1v0mbdj.etr89bj1 > img {
+  width: 100px;
+  height: 100px;
+}
+
+div.css-zt5igj.e16nr0p33 {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  padding: 20px 93px 9px 18px;
+  vertical-align: top;
+}
