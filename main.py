@@ -102,7 +102,13 @@ temperature = weather_data.find('div',{'class':'temperature_text'}).text.strip()
 tY = weather_data.find_all('p',{'class':'summary'})
 for ty in tY:
     ty_list = ty.text.strip()  
-    ct=ty_list[5:9]
+    if "높아요" in ty_list:
+        ct = ty_list[4:9]
+    elif "낮아요" in ty_list:
+        ct = "-" + ty_list[4:9]
+
+
+
 # 체감온도와 습도
 tS = weather_data.find_all('dl',{'class':'summary_list'})
 for ts in tS:
@@ -162,8 +168,9 @@ for rain in rain_rate:
 
 st.subheader(address)  
 
+
 col1, col2, col3 = st.columns(3)
-col1.metric(label='현재 기온 🌡️' ,value = temperature,delta="-"+ct,help=ty_list[0:13])
+col1.metric(label='현재 기온 🌡️' ,value = temperature,delta=ct,help=ty_list[0:13])
 col1.caption(ts_list[0:16])
 col1.caption(ts_list[16:])
 col2.metric(label='날씨 상태'  ,value= weatherStatus)
