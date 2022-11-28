@@ -1,7 +1,6 @@
 streamlit
 pandas
 bs4
-urllib
 requests
 plotly
 matplotlib
