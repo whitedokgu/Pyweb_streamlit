@@ -109,6 +109,34 @@ for ts in tS:
     ts_list = ts.text.strip()
 # 날씨 상태
 weatherStatus = weather_data.find('span',{'class':'weather before_slash'}).text 
+
+if option == "이천":
+    outStr.text = "Icheon-si"
+elif option == "김포":
+    outStr.text = "Gimpo-si"
+elif option == "강화":
+    outStr.text = "Ganghwa-gun"
+elif option == "시흥":
+    outStr.text = "Siheung-si"
+elif option == "의정부":
+    outStr.text = "Uijeongbu-si"
+elif option == "고양":
+    outStr.text = "Goyang-si"
+elif option == "양주":
+    outStr.text = "Yangju-si"
+elif option == "연천":
+    outStr.text = "Yeoncheon-gun"
+elif option == "포천":
+    outStr.text = "Pocheon-si"
+elif option == "구리":
+    outStr.text = "Guri-si"
+elif option == "양평":
+    outStr.text = "Yeongdeungpo-gu"
+elif option == "오산":
+    outStr.text = "Osan"
+elif option == "성남":
+    outStr.text = "seongnam-si"
+
 # 날씨 이미지 가져오기
 base_url  = f"https://api.openweathermap.org/data/2.5/weather?q={outStr.text}&appid={API_KEY}&units=metric"
 weather_data = requests.get(base_url).json()
