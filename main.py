@@ -136,7 +136,7 @@ st.subheader(address)
 
 col1, col2, col3 = st.columns(3)
 col1.metric(label='현재 기온 🌡️' ,value = temperature,delta="-"+ct,help=ty_list[0:13])
-col1.caption(ts_list[0:15])
+col1.caption(ts_list[0:16])
 col1.caption(ts_list[16:])
 col2.metric(label='날씨 상태'  ,value= weatherStatus)
 col2.image(icon)
