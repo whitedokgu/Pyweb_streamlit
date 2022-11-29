@@ -147,7 +147,7 @@ elif option == "성남":
 base_url  = f"https://api.openweathermap.org/data/2.5/weather?q={outStr.text}&appid={API_KEY}&units=metric"
 weather_data = requests.get(base_url).json()
 try:     
-    icon_id = weather_data['weather'][0]['icon']       
+    icon_id = weather_data['weather'][0]['icon']  
     icon = f"http://openweathermap.org/img/wn/{text_mod}@2x.png"
 except KeyError:
     st.error("해당지역은 날씨 이미지가 지원되지 않습니다.")  
