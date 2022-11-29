@@ -43,7 +43,7 @@ Response = REQ.urlopen( gUrl )
 
 #응답받은 HTML 내용을 BeautifulSoup 클래스의 객체 형태로 생성/반환
 B_soup = BeautifulSoup( Response, "html.parser") #html.parser , html5lib
-dbUpdate = B_soup.find('title').text
+dbUpdate = B_soup.find('item').find('title').text
 st.caption(dbUpdate[12:])
 #객체변환한 데이터를 Dlist에 추가하여 DataFrame생성
 DList = []
