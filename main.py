@@ -152,6 +152,7 @@ try:
 except KeyError:
     st.error("해당지역은 날씨 이미지가 지원되지 않습니다.")  
     icon = f"https://thenounproject.com/api/private/icons/4751555/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23FFFFFF&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABjgchnJrW3bZMwlQDFMBV1ZvrfSbWUdwx327OtFSfgPN7veREt0MGcOyQFJ41A5jGFWelADPVO-3D1xlrX0W-5Qu9xyQ%3D%3D.png" 
+st.write(icon_id)
 # 공기 상태
 air = soup.find('ul',{'class' : 'today_chart_list'})
 infos = air.find_all('li',{'class' : 'item_today'})
