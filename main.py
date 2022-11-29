@@ -43,7 +43,8 @@ Response = REQ.urlopen( gUrl )
 
 #응답받은 HTML 내용을 BeautifulSoup 클래스의 객체 형태로 생성/반환
 B_soup = BeautifulSoup( Response, "html.parser") #html.parser , html5lib
-
+dbUpdate = B_soup.find('title').text
+st.caption(dbUpdate)
 #객체변환한 데이터를 Dlist에 추가하여 DataFrame생성
 DList = []
 for location in B_soup.select("location"):
@@ -85,8 +86,6 @@ option = st.selectbox(
 
 translator = googletrans.Translator()
 outStr = translator.translate(option, dest='en', src='auto')
-dbUpdate = soup.find('title').text
-st.caption(dbUpdate)
 st.write('선택된 지역: ', option)   
 
 # 선택한 지역의 정보
