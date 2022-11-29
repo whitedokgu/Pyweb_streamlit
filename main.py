@@ -85,7 +85,8 @@ option = st.selectbox(
 
 translator = googletrans.Translator()
 outStr = translator.translate(option, dest='en', src='auto')
-
+dbUpdate = soup.find('title').text
+st.caption(dbUpdate)
 st.write('선택된 지역: ', option)   
 
 # 선택한 지역의 정보
@@ -187,7 +188,7 @@ mask = df['도시'].isin([option])
 df_grouped = df[mask].groupby(by=['날짜']).sum()[['최고온도','최저온도','일교차']]
 df_grouped = df_grouped.reset_index()
 
-st.subheader('날씨 예보')
+st.subheader('날씨 예보 그래')
 
 st.sidebar.subheader('날씨 예보 차트 매개변수')
 plot_data = st.sidebar.multiselect('데이터 선택', ['최저온도', '최고온도','일교차'], ['최저온도', '최고온도','일교차'])
