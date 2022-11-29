@@ -148,7 +148,7 @@ base_url  = f"https://api.openweathermap.org/data/2.5/weather?q={outStr.text}&ap
 weather_data = requests.get(base_url).json()
 try:     
     icon_id = weather_data['weather'][0]['icon']  
-    icon = f"http://openweathermap.org/img/wn/{text_mod}@2x.png"
+    icon = f"http://openweathermap.org/img/wn/{icon_id}@2x.png"
 except KeyError:
     st.error("해당지역은 날씨 이미지가 지원되지 않습니다.")  
     icon = f"https://thenounproject.com/api/private/icons/4751555/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23FFFFFF&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABjgchnJrW3bZMwlQDFMBV1ZvrfSbWUdwx327OtFSfgPN7veREt0MGcOyQFJ41A5jGFWelADPVO-3D1xlrX0W-5Qu9xyQ%3D%3D.png" 
