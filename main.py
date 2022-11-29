@@ -37,7 +37,6 @@ st.title("기상청 육상 중기예보 🌤️")
 
 #출처: https://www.weather.go.kr/w/pop/rss-guide.do
 #참고자료: https://www.weather.go.kr/w/resources/pdf/midtermforecast_rss.pdf
-#만든날짜기준(2022-11-20) 예보 10일치
 gUrl ="http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=109"
 Response = REQ.urlopen( gUrl )
 
@@ -56,6 +55,7 @@ for location in B_soup.select("location"):
                       "최고온도":int(data.tmx.string)}  )
 
 Df = pd.DataFrame(DList)
+
 #도시와 날짜를 인덱스로 설정.
 Df.set_index(["도시", "날짜"], inplace=True)
 pd.set_option("display.max_rows", None)
@@ -94,10 +94,13 @@ soup = BeautifulSoup(nowNalsee.text,'html.parser')
 
 # 위치
 address = soup.find('div',{'class': 'title_area _area_panel'}).find('h2', {'class': 'title'}).text
+
 # 현재 날씨 
 weather_data = soup.find('div',{'class': 'weather_info'})
+
 # 현재 온도 
 temperature = weather_data.find('div',{'class':'temperature_text'}).text.strip()[5:]
+
 # 어제의 기온과 비교
 tY = weather_data.find_all('p',{'class':'summary'})
 for ty in tY:
@@ -107,15 +110,15 @@ for ty in tY:
     elif "낮아요" in ty_list:
         ct = "-" + ty_list[4:9]
 
-
-
 # 체감온도와 습도
 tS = weather_data.find_all('dl',{'class':'summary_list'})
 for ts in tS:
     ts_list = ts.text.strip()
+    
 # 날씨 상태
 weatherStatus = weather_data.find('span',{'class':'weather before_slash'}).text 
 
+# 번역오류 
 if option == "이천":
     outStr.text = "Icheon-si"
 elif option == "김포":
@@ -152,12 +155,14 @@ try:
 except KeyError:
     st.error("해당지역은 날씨 이미지가 지원되지 않습니다.")  
     icon = f"https://thenounproject.com/api/private/icons/4751555/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23FFFFFF&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABjgchnJrW3bZMwlQDFMBV1ZvrfSbWUdwx327OtFSfgPN7veREt0MGcOyQFJ41A5jGFWelADPVO-3D1xlrX0W-5Qu9xyQ%3D%3D.png" 
+
 # 공기 상태
 air = soup.find('ul',{'class' : 'today_chart_list'})
 infos = air.find_all('li',{'class' : 'item_today'})
 air_list= []
 for info in infos:
     air_list.append(info.text.strip())
+    
 # 오늘 강수 확률
 rain = soup.find('div',{'class' : 'cell_weather'})
 rain_rate = rain.find_all('span',{'class' : 'rainfall'})
@@ -167,10 +172,9 @@ for rain in rain_rate:
 
 st.subheader(address)  
 
-
 col1, col2, col3 = st.columns(3)
 col1.metric(label='현재 기온 🌡️' ,value = temperature,delta=ct,help=ty_list[0:13])
-col1.caption(ts_list[0:16])
+col1.caption(ts_list[0:15])
 col1.caption(ts_list[16:])
 col2.metric(label='날씨 상태'  ,value= weatherStatus)
 col2.image(icon)
@@ -187,10 +191,12 @@ mask = df['도시'].isin([option])
 df_grouped = df[mask].groupby(by=['날짜']).sum()[['최고온도','최저온도','일교차']]
 df_grouped = df_grouped.reset_index()
 
-st.subheader('날씨 예보 그래')
+st.subheader('날씨 예보 그래프')
 
+#sidebar 메뉴
 st.sidebar.subheader('날씨 예보 차트 매개변수')
 plot_data = st.sidebar.multiselect('데이터 선택', ['최저온도', '최고온도','일교차'], ['최저온도', '최고온도','일교차'])
 plot_height = st.sidebar.slider('그래프의 높이 지정', 400, 800, 500)
 
+#그래프
 st.line_chart(df_grouped,x='날짜',y=plot_data, height = plot_height)
