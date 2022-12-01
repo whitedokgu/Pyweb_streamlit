@@ -37,7 +37,7 @@ st.title("기상청 육상 중기예보 🌤️")
 
 #출처: https://www.weather.go.kr/w/pop/rss-guide.do
 #참고자료: https://www.weather.go.kr/w/resources/pdf/midtermforecast_rss.pdf
-gUrl ="http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=109"
+gUrl ="http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=108"
 Response = REQ.urlopen( gUrl )
 
 #응답받은 HTML 내용을 BeautifulSoup 클래스의 객체 형태로 생성/반환
